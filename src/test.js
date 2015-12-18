@@ -1,6 +1,9 @@
 (function(){
   "use strict";
 
+  var chai = require("chai");
+  
+
   assertEqual(8, add(3, 4));
 
   function add(a, b) {
