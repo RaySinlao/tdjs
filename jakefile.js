@@ -1,19 +1,29 @@
 // Copyright (c) 2015 Titanium I.T. LLC. All rights reserved. For license, see 'README' or 'LICENSE' file.
 
-/* globals desc: false, task: false, complete: false, fail: false */
+/* globals jake:false, desc:false, task:false, complete:false, fail:false */
 (function() {
   'use strict';
 
   var semver = require("semver");
   var jshint = require('simplebuild-jshint');
 
+  //**** General-purpose tasks
+
   desc('Default build');
   task('default', [ 'version', 'lint' ], function() {
     console.log('\n\nBUILD OK');
   });
 
+  desc('Run a localhost server');
+  task('run', function() {
+    jake.exec('node node_modules/http-server/bin/http-server src', { interactive: true }, complete);
+  });
+
+
+  //**** Supporting tasks
+
   desc('Check Node version');
-  task('version', function(){
+  task('version', function() {
     console.log('Checking Node version: .');
     
     var packageJson = require('./package.json');
@@ -27,11 +37,11 @@
   });
 
   desc('Lint the code');
-  task('lint', function(){
+  task('lint', function() {
     process.stdout.write('Linting Javascript: ');
 
     jshint.checkFiles({
-      files: "jakefile.js",
+      files: ["jakefile.js", "src/**/*.js"],
       options: {
         bitwise: true,
         eqeqeq: true,
