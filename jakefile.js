@@ -1,4 +1,6 @@
 // Copyright (c) 2015 Titanium I.T. LLC. All rights reserved. For license, see 'README' or 'LICENSE' file.
+
+/* globals desc: false, task: false, complete: false, fail: false */
 (function() {
   'use strict';
 
@@ -30,10 +32,37 @@
 
     jshint.checkFiles({
       files: "jakefile.js",
-      options: {},
-      globals: {}
+      options: {
+        bitwise: true,
+        eqeqeq: true,
+        forin: true,
+        freeze: true,
+        futurehostile: true,
+        latedef: "nofunc",
+        noarg: true,
+        nocomma: true,
+        nonbsp: true,
+        nonew: true,
+        strict: true,
+        undef: true,
+
+        node: true,
+        browser: true
+      },
+      globals: {
+
+      }
     }, complete, fail);
 
   }, { async: true });
+
+  // deleteMe();
+
+  // function deleteMe() {
+  //   // var a = 42;
+  //   console.log(a);
+
+  //   // new MyClass();
+  // }
 
 }());
