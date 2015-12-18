@@ -56,13 +56,4 @@
 
   }, { async: true });
 
-  // deleteMe();
-
-  // function deleteMe() {
-  //   // var a = 42;
-  //   console.log(a);
-
-  //   // new MyClass();
-  // }
-
 }());
