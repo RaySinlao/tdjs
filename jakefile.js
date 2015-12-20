@@ -1,6 +1,6 @@
 // Copyright (c) 2015 Titanium I.T. LLC. All rights reserved. For license, see 'README' or 'LICENSE' file.
-
 /* globals jake:false,desc:false,task:false,complete:false,fail:false */
+
 (function() {
   'use strict';
 
@@ -64,8 +64,15 @@
         node: true,
         browser: true
       },
+      
       globals: {
-
+        // Mocha
+        describe: false,
+        it: false,
+        before: false,
+        after: false,
+        beforeEach: false,
+        afterEach: false
       }
     }, complete, fail);
 
