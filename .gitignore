@@ -1,5 +1,15 @@
+# Mac OS X
 .DS_Store
 
+# WebStorm
 .idea/workspace.xml
 
+# npm
 node_modules/**/.bin
+
+# Karma binaries
+node_modules/karma/node_modules/chokidar/node_modules/fsevents/lib/
+node_modules/karma/node_modules/socket.io/node_modules/engine.io/node_modules/ws/node_modules/bufferutil/build/
+node_modules/karma/node_modules/socket.io/node_modules/engine.io/node_modules/ws/node_modules/utf-8-validate/build/
+node_modules/karma/node_modules/socket.io/node_modules/socket.io-client/node_modules/engine.io-client/node_modules/ws/node_modules/bufferutil/build/
+node_modules/karma/node_modules/socket.io/node_modules/socket.io-client/node_modules/engine.io-client/node_modules/ws/node_modules/utf-8-validate/build/

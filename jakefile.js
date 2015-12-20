@@ -19,6 +19,11 @@
     jake.exec('node node_modules/http-server/bin/http-server src', { interactive: true }, complete);
   });
 
+  desc('Run tests');
+  task('test', function() {
+    jake.exec('./node_modules/.bin/mocha src/test.js', { interactive: true }, complete);
+  });
+
 
   //**** Supporting tasks
 
