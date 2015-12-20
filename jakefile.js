@@ -9,6 +9,7 @@
   var karma = require("simplebuild-karma");
 
   var KARMA_CONFIG = "karma.conf.js";
+  
 
   //**** General-purpose tasks
 
@@ -29,7 +30,6 @@
     jake.exec("node node_modules/http-server/bin/http-server src", { interactive: true }, complete);
   });
 
-  
 
   //**** Supporting tasks
 
@@ -63,10 +63,19 @@
   task("test", function() {
     console.log("Testing Javascipt");
     karma.run({
-      configFile: KARMA_CONFIG
+      configFile: KARMA_CONFIG,
+      expectedBrowsers: expectedBrowsers(),
+      strict: !process.env.loose
     }, complete, fail);
   }, { async: true });
 
+
+  function expectedBrowsers() {
+    return [
+      "Chrome 47.0.2526 (Mac OS X 10.10.5)",
+      "Safari 9.0.1 (Mac OS X 10.10.5)"
+    ];
+  }
 
   function lintOptions(){
     return {
