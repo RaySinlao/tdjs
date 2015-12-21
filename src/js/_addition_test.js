@@ -2,7 +2,7 @@
   "use strict";
 
   var addition = require("./addition.js");
-  var assert = require("../vendor/chai-v2.1.0.js").assert;
+  var assert = require("./assert.js");
 
   describe("Addition", function() {
 
