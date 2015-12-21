@@ -1,5 +1,5 @@
 // Copyright (c) 2015 Titanium I.T. LLC. All rights reserved. For license, see "README" or "LICENSE" file.
-/* globals jake:false,desc:false,task:false,complete:false,fail:false */
+/* globals jake:false,desc:false,task:false,complete:false,fail:false,directory:false */
 
 (function() {
   "use strict";
@@ -29,7 +29,7 @@
   desc("Run a localhost server");
   task("run", ["build"], function() {
     jake.exec("node node_modules/http-server/bin/http-server " + DIST_DIR, { interactive: true }, complete);
-  });
+  }, { async: true });
 
   desc("Erase all generated files");
   task("clean", function() {
@@ -58,7 +58,7 @@
     process.stdout.write("Linting Javascript: ");
 
     jshint.checkFiles({
-      files: ["jakefile.js", "src/**/*.js"],
+      files: ["jakefile.js", "src/js/**/*.js"],
       options: lintOptions(),
       globals: lintGlobals()
     }, complete, fail);
@@ -80,14 +80,15 @@
     console.log("Building distribution directory: .");
 
     shell.rm("-rf", DIST_DIR + "/*");
-    shell.cp("src/index.html", DIST_DIR);
+    shell.cp("src/content/index.html", DIST_DIR);
+
     jake.exec(
-      "node node_modules/browserify/bin/cmd.js src/app.js -o " + DIST_DIR + "/bundle.js", 
+      "node node_modules/browserify/bin/cmd.js src/js/app.js -o " + DIST_DIR + "/bundle.js", 
       { interactive: true }, 
       complete
     );
 
-  });
+  }, { async: true });
 
   directory(DIST_DIR);
 
