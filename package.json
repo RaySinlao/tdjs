@@ -17,6 +17,7 @@
     "mocha": "^2.3.4",
     "semver": "^5.1.0",
     "shell": "^0.3.2",
+    "shelljs": "^0.5.3",
     "simplebuild-jshint": "^1.2.0",
     "simplebuild-karma": "^0.8.1"
   }

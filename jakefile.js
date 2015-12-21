@@ -4,6 +4,7 @@
 (function() {
   "use strict";
 
+  var shell = require("shell");
   var semver = require("semver");
   var jshint = require("simplebuild-jshint");
   var karma = require("simplebuild-karma");
@@ -32,6 +33,7 @@
 
   desc("Erase all generated files");
   task("clean", function() {
+    shell.rm("-rf", "generated");
     console.log("Clean");
   });
 
