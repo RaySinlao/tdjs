@@ -4,7 +4,7 @@
 (function() {
   "use strict";
 
-  var shell = require("shell");
+  var shell = require("shelljs");
   var semver = require("semver");
   var jshint = require("simplebuild-jshint");
   var karma = require("simplebuild-karma");
@@ -33,8 +33,8 @@
 
   desc("Erase all generated files");
   task("clean", function() {
+    console.log("Erasing generated files: .");
     shell.rm("-rf", "generated");
-    console.log("Clean");
   });
 
   //**** Supporting tasks
@@ -77,7 +77,16 @@
 
   desc("Build distribution directory");
   task("build", [DIST_DIR], function(){
-    console.log("Build")
+    console.log("Building distribution directory: .");
+
+    shell.rm("-rf", DIST_DIR + "/*");
+    shell.cp("src/index.html", DIST_DIR);
+    jake.exec(
+      "node node_modules/browserify/bin/cmd.js src/app.js -o " + DIST_DIR + "/bundle.js", 
+      { interactive: true }, 
+      complete
+    );
+
   });
 
   directory(DIST_DIR);
