@@ -9,7 +9,7 @@
   var karma = require("simplebuild-karma");
 
   var KARMA_CONFIG = "karma.conf.js";
-  
+
 
   //**** General-purpose tasks
 
@@ -72,8 +72,8 @@
 
   function expectedBrowsers() {
     return [
-      "Chrome 47.0.2526 (Mac OS X 10.10.5)",
-      "Safari 9.0.1 (Mac OS X 10.10.5)"
+      "Chrome 47.0.2526 (Mac OS X 10.10.5)"
+      // "Safari 9.0.1 (Mac OS X 10.10.5)"
     ];
   }
 
