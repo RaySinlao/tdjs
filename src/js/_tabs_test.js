@@ -6,17 +6,31 @@
 
   describe("Tabs", function(){
 
-    it("has an API", function() {
+    it("hides an element", function() {
+      var element = addElement("div");
 
-      tabs.initialize();
+      tabs.initialize(element);
 
+      assert.equal(getDisplayProperty(element), "none");
 
-
-      // var div = document.createElement("div");
-      // div.innerHTML = "This is an example.";
-      // document.body.appendChild(div);
-      // div.parentNode.removeChild(div);
+      removeElement(element);
+      
     });
+
+    function addElement(tagName){
+      var element = document.createElement(tagName);
+      document.body.appendChild(element);
+      return element;
+    }
+
+    function getDisplayProperty(element) {
+      var styles = getComputedStyle(element);
+      return styles.getPropertyValue("display");
+    }
+
+    function removeElement(element) {
+      document.body.removeChild(element);
+    }
 
   });
 

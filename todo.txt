@@ -3,5 +3,3 @@ Mark tab as active
 Hide all inactive content divs
 
 Hide one inactive content div
-
-Has an API
