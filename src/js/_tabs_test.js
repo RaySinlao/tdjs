@@ -11,9 +11,22 @@
 
       tabs.initialize(element, "someClass");
 
-      assert.equal(getClass(element), "someClass")
+      assert.equal(getClass(element), "someClass");
 
       removeElement(element);
+    });
+
+    it("Sets a class on an element withoug erasing existing classes", function() {
+      var element = addElement("div");
+
+      element.setAttribute("class", "existingClass");
+
+      tabs.initialize(element, "newClass");
+
+      assert.equal(getClass(element), "existingClass newClass");
+
+      removeElement(element);
+
     });
 
     function getClass(element) {
