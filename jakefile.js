@@ -1,4 +1,3 @@
-// Copyright (c) 2015 Titanium I.T. LLC. All rights reserved. For license, see "README" or "LICENSE" file.
 /* globals jake:false,desc:false,task:false,complete:false,fail:false,directory:false */
 
 (function() {
