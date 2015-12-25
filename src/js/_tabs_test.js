@@ -4,7 +4,7 @@
   var assert = require("./assert.js");
   var tabs = require("./tabs.js");
 
-  describe("Tabs", function() {
+  describe("Tabs - ", function() {
 
     var IRRELEVANT = "irrelevant";
 
@@ -55,18 +55,23 @@
     });
 
     it("styles the active tab with a class", function() {
-      var defaultContent = createTab();
-      var defaultTab = createTabContent();
+      var tab1 = createTab();
+      var defaultTab = createTab();
+      var tab3 = createTab();
+
+      var defaultContent = createTabContent();
 
       tabs.initialize({
-        tabs: [ defaultTab ],
-        content: [ defaultContent ],
+        tabs: [ tab1, defaultTab, tab3 ],
+        content: [ createTabContent(), defaultContent, createTabContent() ],
         default: defaultContent,
         activeTabClass: "activeTab",
         contentHideClass: IRRELEVANT
       });
 
-      assert.equal(getClasses(defaultTab), "activeTab");
+      assert.equal(getClasses(tab1), null, "tab 1 should not be styled");
+      assert.equal(getClasses(defaultTab), "activeTab", "default element should be hidden");
+      assert.equal(getClasses(tab3), null, "tab 3 should not be styled");
 
     });
 
