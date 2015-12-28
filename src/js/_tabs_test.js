@@ -21,14 +21,16 @@
 
 
     it("hides all content elements except the default upon initialization", function() {
+      var defaultTab = createTab();
+
       var content1 = createTabContent();
       var defaultElement = createTabContent();
       var content3 = createTabContent();
 
       tabs.initialize({
-        tabs: [ createTab(), createTab(), createTab() ],
+        tabs: [ createTab(), defaultTab, createTab() ],
         content: [ content1, defaultElement, content3 ],
-        default: defaultElement,
+        defaultTab: defaultTab,
         activeTabClass: "activeTab",
         contentHideClass: "hideClass"
       });
@@ -39,14 +41,16 @@
     });
 
     it("preserves existing classes when hiding a content element", function() {
+      var defaultTab = createTab();
+
       var defaultContent = createTabContent();
       var hiddenContent = createTabContent();
       hiddenContent.setAttribute("class", "existingClass");
 
       tabs.initialize({
-        tabs: [ createTab(), createTab() ],
+        tabs: [ defaultTab, createTab() ],
         content: [ defaultContent, hiddenContent ],
-        default: defaultContent,
+        defaultTab: defaultTab,
         activeTabClass: IRRELEVANT,
         contentHideClass: "newClass"
       });
@@ -64,7 +68,7 @@
       tabs.initialize({
         tabs: [ tab1, defaultTab, tab3 ],
         content: [ createTabContent(), defaultContent, createTabContent() ],
-        default: defaultContent,
+        defaultTab: defaultTab,
         activeTabClass: "activeTab",
         contentHideClass: IRRELEVANT
       });
